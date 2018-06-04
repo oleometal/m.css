@@ -55,6 +55,14 @@ class Blocks(IntegrationTestCase):
         self.assertEqual(*self.actual_expected_contents('File_8h.html'))
         self.assertEqual(*self.actual_expected_contents('old.html'))
 
+class BlocksTrailingWhitespace(IntegrationTestCase):
+    def __init__(self, *args, **kwargs):
+        super().__init__(__file__, 'blocks_trailing_whitespace', *args, **kwargs)
+
+    def test(self):
+        self.run_dox2html5(wildcard='*.xml')
+        self.assertEqual(*self.actual_expected_contents('File_8h.html'))
+
 class Code(IntegrationTestCase):
     def __init__(self, *args, **kwargs):
         super().__init__(__file__, 'code', *args, **kwargs)
